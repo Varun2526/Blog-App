@@ -13,7 +13,7 @@ config();
 const app = exp();
 //enable cors
 app.use(cors({
-  origin:['http://localhost:5173'],
+  origin:['http://localhost:5173', 'https://blog-app-iota-red.vercel.app'],
   credentials:true
 }))
 //add cookie parser middeleware
@@ -33,7 +33,10 @@ const connectDB = async () => {
     console.log("DB server connected");
     //assign port
     const port = process.env.PORT || 5000;
-    app.listen(port, () => console.log(`server listening on ${port}..`));
+    // Only run app.listen if we are NOT on Vercel
+    if (!process.env.VERCEL) {
+        app.listen(port, () => console.log(`server listening on ${port}..`));
+    }
   } catch (err) {
     console.log("err in db connect", err);
   }
@@ -74,3 +77,6 @@ app.use((err, req, res, next) => {
   //send server side error
   res.status(500).json({ message: "error occurred", error: "Server side error" });
 });
+
+// Export app for Vercel serverless
+export default app;
