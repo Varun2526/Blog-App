@@ -13,7 +13,7 @@ config();
 const app = exp();
 //enable cors
 app.use(cors({
-  origin:['http://localhost:5173', 'https://blog-app-iota-red.vercel.app'],
+  origin:['http://localhost:5173', 'https://blog-app-gamma-liart.vercel.app'],
   credentials:true
 }))
 //add cookie parser middeleware
