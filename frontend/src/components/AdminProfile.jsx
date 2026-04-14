@@ -59,7 +59,7 @@ function AdminProfile() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      
+
       {/* PROFILE HEADER */}
       <div className="bg-white border border-gray-200 rounded-2xl p-6 mb-8 shadow-sm flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -84,7 +84,7 @@ function AdminProfile() {
       </div>
 
       <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">Admin Dashboard</h2>
-      
+
       <div className="bg-white rounded shadow overflow-hidden border border-gray-200">
         <table className="w-full text-left">
           <thead className="bg-gray-100 border-b border-gray-300">
@@ -119,9 +119,9 @@ function AdminProfile() {
                 </td>
                 <td className="py-3 px-4">
                   {user.isuseractive ? (
-                     <span className="px-2 py-1 rounded text-sm bg-green-100 text-green-800">
-                     Active
-                   </span>
+                    <span className="px-2 py-1 rounded text-sm bg-green-100 text-green-800">
+                      Active
+                    </span>
                   ) : (
                     <span className="px-2 py-1 rounded text-sm bg-red-100 text-red-800">
                       Blocked
@@ -131,11 +131,10 @@ function AdminProfile() {
                 <td className="py-3 px-4">
                   <button
                     onClick={() => toggleUserStatus(user)}
-                    className={`px-3 py-1 rounded text-white ${
-                      user.isuseractive 
-                      ? 'bg-red-500 hover:bg-red-600' 
-                      : 'bg-green-500 hover:bg-green-600'
-                    }`}
+                    className={`px-3 py-1 rounded text-white ${user.isuseractive
+                        ? 'bg-red-500 hover:bg-red-600'
+                        : 'bg-green-500 hover:bg-green-600'
+                      }`}
                   >
                     {user.isuseractive ? 'Block User' : 'Unblock User'}
                   </button>

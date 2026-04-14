@@ -35,7 +35,7 @@ function ArticleByID() {
   const { register, handleSubmit } = useForm();
 
   const user = useAuth((state) => state.currentUser);
-  console.log("user ",user)
+  console.log("user ", user)
 
   const [article, setArticle] = useState(location.state || null);
   const [loading, setLoading] = useState(false);
@@ -116,12 +116,12 @@ function ArticleByID() {
     console.log(commentObj);
     let res = await axios.put("http://localhost:4002/user-api/articles", commentObj, { withCredentials: true });
     if (res.status === 200) {
-      
+
       setArticle(res.data.payload);
     }
   };
 
- // console.log("article",article)
+  // console.log("article",article)
 
 
   if (loading) return <p className={loadingClass}>Loading article...</p>;
