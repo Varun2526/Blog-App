@@ -3,6 +3,20 @@ import { verifyToken } from "../middlewares/VerifyToken.js";
 import { ArticleModel } from "../models/ArticleModel.js";
 export const userApp = exp.Router();
 
+//Read single article by ID
+userApp.get("/article/:id", verifyToken("USER", "AUTHOR", "ADMIN"), async (req, res) => {
+  const article = await ArticleModel.findOne({
+    _id: req.params.id,
+    isArcticleActive: true
+  }).populate("comments.user");
+
+  if (!article) {
+    return res.status(404).json({ message: "Article not found" });
+  }
+
+  res.status(200).json({ message: "article", payload: article });
+});
+
 //Read articles of all authors
 userApp.get("/articles", verifyToken("USER"), async (req, res) => {
   //read artcles

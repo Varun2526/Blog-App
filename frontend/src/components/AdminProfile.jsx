@@ -18,7 +18,7 @@ function AdminProfile() {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("https://blog-app-backend-roan.vercel.app/admin-api/users", { withCredentials: true });
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/admin-api/users`, { withCredentials: true });
       if (res.status === 200) {
         setUsers(res.data.payload);
       }
@@ -37,7 +37,7 @@ function AdminProfile() {
   const toggleUserStatus = async (user) => {
     const newStatus = !user.isuseractive;
     try {
-      const res = await axios.put("https://blog-app-backend-roan.vercel.app/admin-api/users", {
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/admin-api/users`, {
         userId: user._id,
         isActive: newStatus
       }, { withCredentials: true });

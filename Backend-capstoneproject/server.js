@@ -13,11 +13,18 @@ config();
 const app = exp();
 //enable cors
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://blog-app-omega-kohl.vercel.app',
-    'https://blog-app-6yq4ea7wg-varunkoppula2007-gmailcoms-projects.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:5174',
+    ];
+    // Allow Vercel preview/production URLs and localhost
+    if (!origin || allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 //add cookie parser middeleware
