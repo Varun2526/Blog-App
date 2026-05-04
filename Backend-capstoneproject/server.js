@@ -13,9 +13,13 @@ config();
 const app = exp();
 //enable cors
 app.use(cors({
-  origin:['http://localhost:5173', 'https://blog-app-gamma-liart.vercel.app'],
-  credentials:true
-}))
+  origin: [
+    'http://localhost:5173',
+    'https://blog-app-omega-kohl.vercel.app',
+    'https://blog-app-6yq4ea7wg-varunkoppula2007-gmailcoms-projects.vercel.app'
+  ],
+  credentials: true
+}));
 //add cookie parser middeleware
 app.use(cookieParser())
 //body parser middleware
