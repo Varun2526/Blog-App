@@ -46,7 +46,7 @@ const connectDB = async () => {
     const port = process.env.PORT || 5000;
     // Only run app.listen if we are NOT on Vercel
     if (!process.env.VERCEL) {
-        app.listen(port, () => console.log(`server listening on ${port}..`));
+      app.listen(port, () => console.log(`server listening on ${port}..`));
     }
   } catch (err) {
     console.log("err in db connect", err);
@@ -63,7 +63,7 @@ app.use((req, res, next) => {
 
 //Error handling middleware
 app.use((err, req, res, next) => {
-  console.log("error is ",err)
+  console.log("error is ", err)
   console.log("Full error:", JSON.stringify(err, null, 2));
   //ValidationError
   if (err.name === "ValidationError") {
